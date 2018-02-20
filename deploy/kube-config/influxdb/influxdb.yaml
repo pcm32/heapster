@@ -17,9 +17,11 @@ spec:
         volumeMounts:
         - mountPath: /data
           name: influxdb-storage
+          subPath: influx-db
       volumes:
       - name: influxdb-storage
-        emptyDir: {}
+        persistentVolumeClaim:
+             claimName: influx-pvc
 ---
 apiVersion: v1
 kind: Service
